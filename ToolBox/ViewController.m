@@ -14,6 +14,7 @@
 @property (nonatomic, strong) UISwitch *mainSwitch;
 @property (nonatomic, strong) UIDatePicker *myDatePicker;
 @property (nonatomic, strong) UISlider *slider;
+@property (nonatomic, strong) UISegmentedControl *mySegmentedControl;
 
 
 @end
@@ -78,8 +79,31 @@
     self.slider.value = self.slider.maximumValue / 2.0;  // could also use [self.slider setValue:self.slider.maximumValue / 2.0 animated:YES];
     [self.view addSubview:self.slider];
     
+    
+    //Customize color
+    self.slider.minimumTrackTintColor = [UIColor redColor];
+    self.slider.maximumTrackTintColor = [UIColor greenColor];
+    self.slider.thumbTintColor = [UIColor blackColor];
+    //using images
+    [self.slider setMinimumValueImage:[UIImage imageNamed:@"MinimumValue"]]; //displayed outerleft 23x23 or 46x46 for Retina
+    [self.slider setMaximumValueImage:[UIImage imageNamed:@"MaximumValue"]]; //displayed outerleft 23x23 or 46x46 for Retina
+    
+    
     self.slider.continuous = NO; // Only notify when thumb is removed from slider
     [self.slider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
+    
+    //Segmented Controler
+    NSArray<NSString *> *segments = @[ @"iPhone", [UIImage imageNamed:@"MaximumValue"], @"iPad", @"iPod", @"iMac"];
+    self.mySegmentedControl = [[UISegmentedControl alloc] initWithItems:segments];
+    CGRect segmentedFrame = self.mySegmentedControl.frame;
+    segmentedFrame.size.height = 128.0f;
+    segmentedFrame.size.width = 300.0f;
+    self.mySegmentedControl.frame = segmentedFrame;
+    self.mySegmentedControl.center = CGPointMake(self.view.center.x , self.view.center.y + 250);
+    [self.view addSubview:self.mySegmentedControl];
+    [self.mySegmentedControl addTarget:self action:@selector(segmentChanged:) forControlEvents:UIControlEventValueChanged];
+    
+    self.mySegmentedControl.momentary = YES; //Prevents selected portion from staying highlighted.
 }
 
 - (void) viewDidAppear:(BOOL)animated{
@@ -190,6 +214,17 @@
 -(void) sliderValueChanged:(UISlider *)paramSender{
     if([paramSender isEqual:self.slider]){
         NSLog(@"New value of slider = %f", paramSender.value);
+    }
+}
+
+//PRAGMA MARK: Segmented Control
+-(void) segmentChanged:(UISegmentedControl *)paramSender{
+    if([paramSender isEqual:self.mySegmentedControl]){
+        NSInteger selectedSegmentIndex = [paramSender selectedSegmentIndex];
+        
+        NSString *selectedSegmentText = [paramSender titleForSegmentAtIndex:selectedSegmentIndex];
+        
+        NSLog(@"Segment %ld with %@ text is selected", (long)selectedSegmentIndex, selectedSegmentText);
     }
 }
 
