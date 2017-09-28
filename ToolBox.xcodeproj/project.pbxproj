@@ -14,6 +14,7 @@
 		6178867A1F70D67E00BE573F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 617886791F70D67E00BE573F /* Assets.xcassets */; };
 		6178867D1F70D67E00BE573F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6178867B1F70D67E00BE573F /* LaunchScreen.storyboard */; };
 		617886861F70D71100BE573F /* ch1.m in Sources */ = {isa = PBXBuildFile; fileRef = 617886851F70D71100BE573F /* ch1.m */; };
+		61B9BA231F7CABF600D524FA /* StringReverserActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 61B9BA221F7CABF600D524FA /* StringReverserActivity.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,8 @@
 		617886841F70D71100BE573F /* ch1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ch1.h; path = ../ch1.h; sourceTree = "<group>"; };
 		617886851F70D71100BE573F /* ch1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ch1.m; path = ../ch1.m; sourceTree = "<group>"; };
 		617886881F70DD2600BE573F /* Car.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Car.h; sourceTree = "<group>"; };
+		61B9BA211F7CABF600D524FA /* StringReverserActivity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StringReverserActivity.h; sourceTree = "<group>"; };
+		61B9BA221F7CABF600D524FA /* StringReverserActivity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StringReverserActivity.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +93,8 @@
 				617886841F70D71100BE573F /* ch1.h */,
 				617886851F70D71100BE573F /* ch1.m */,
 				617886881F70DD2600BE573F /* Car.h */,
+				61B9BA211F7CABF600D524FA /* StringReverserActivity.h */,
+				61B9BA221F7CABF600D524FA /* StringReverserActivity.m */,
 			);
 			name = ch1;
 			sourceTree = "<group>";
@@ -170,6 +175,7 @@
 				617886751F70D67E00BE573F /* ViewController.m in Sources */,
 				617886721F70D67E00BE573F /* AppDelegate.m in Sources */,
 				6178866F1F70D67E00BE573F /* main.m in Sources */,
+				61B9BA231F7CABF600D524FA /* StringReverserActivity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,6 +336,7 @@
 				617886831F70D67E00BE573F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

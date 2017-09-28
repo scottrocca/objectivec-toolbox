@@ -25,6 +25,8 @@
     [mutableArray exchangeObjectAtIndex:0 withObjectAtIndex:1];
     [mutableArray removeObjectAtIndex:1];
     [mutableArray setObject:@"Hello" atIndexedSubscript:0];
+    [mutableArray addObject:@"another string"];
+    __unused NSArray<NSString *> *dupString = [mutableArray copy];
     
     //print contents of arrays
     NSLog(@"Contents of Array: %@", mutableArray);

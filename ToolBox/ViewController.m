@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "StringReverserActivity.h"
 
 @interface ViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 
@@ -15,6 +16,7 @@
 @property (nonatomic, strong) UIDatePicker *myDatePicker;
 @property (nonatomic, strong) UISlider *slider;
 @property (nonatomic, strong) UISegmentedControl *mySegmentedControl;
+@property (nonatomic, strong) UIActivityViewController *activityViewController;
 
 
 @end
@@ -162,6 +164,14 @@
 - (void) switchIsChanged:(UISwitch*)paramSender{
     if([self.mainSwitch isOn]){
         NSLog(@"the switch is on");
+        [self launchActivityWithString:@"Hello"];
+    }
+    else{
+        NSArray *itemsToShare = @[@"Item 1", @"Item 2", @"Item 3"];
+        
+        UIActivityViewController *activity = [[UIActivityViewController alloc] initWithActivityItems:itemsToShare applicationActivities:@[[StringReverserActivity new]]];
+        
+        [self presentViewController:activity animated:YES completion:nil];
     }
     
      NSLog(@"The slected Row is %li", (long)[self.myPicker selectedRowInComponent:0] + 1);
@@ -228,5 +238,23 @@
     }
 }
 
+//PRAGMA MARK: NINE PATCH
+-(UIImage *) minimumTrackImage{
+    UIImage *result = [UIImage imageNamed:@"MinimumTrack"];
+    UIEdgeInsets edgeInsets;
+    edgeInsets.left = 4.0f;
+    edgeInsets.top = 0.0f;
+    edgeInsets.right = 0.0f;
+    edgeInsets.bottom = 0.0f;
+    result = [result resizableImageWithCapInsets:edgeInsets];
+    return result;
+}
+
+//PRAGMA MARK: Sharing with UIActivityViewController
+-(void)launchActivityWithString:(NSString *) content{
+    self.activityViewController = [[UIActivityViewController alloc]
+                                   initWithActivityItems:@[content] applicationActivities:nil];
+    [self presentViewController:self.activityViewController animated:YES completion:^{/* Nothing for now**/}];
+}
 
 @end
