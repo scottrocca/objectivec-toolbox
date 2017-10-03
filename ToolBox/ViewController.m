@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "StringReverserActivity.h"
+#import "SecondViewController.h"
 
 @interface ViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 
@@ -16,7 +17,10 @@
 @property (nonatomic, strong) UIDatePicker *myDatePicker;
 @property (nonatomic, strong) UISlider *slider;
 @property (nonatomic, strong) UISegmentedControl *mySegmentedControl;
+@property (nonatomic, strong) UIButton *displaySecondViewControllerButton;
 @property (nonatomic, strong) UIActivityViewController *activityViewController;
+
+
 
 
 @end
@@ -26,99 +30,43 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //Setting Title to be displayed on Navigation Controller top
+    self.title = @"ToolBox Main";
+    
+    [self createSwitchView];
+    [self createPickerView];
+    [self createDatePickerView];
+    [self createSliderView];
+    [self createSegmentedControler];
+    [self createButtonView];
 
-    
-    // Creating a switch by code
-    self.mainSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(100, 100, 0, 0)]; //(x, y, width, height)
-
-
-    [self.view addSubview:self.mainSwitch];
-    
-    self.mainSwitch.tintColor = [UIColor redColor]; //off-mode color
-    self.mainSwitch.onTintColor = [UIColor brownColor]; //on color
-    self.mainSwitch.thumbTintColor = [UIColor greenColor]; //knob' color
-    
-    //To call a selector method when switch is toggled
-    [self.mainSwitch addTarget:self action:@selector(switchIsChanged:) forControlEvents:UIControlEventValueChanged];
-    
-    //Create a Picker by code
-    self.myPicker = [[UIPickerView alloc] init];
-    self.myPicker.dataSource = self;
-    self.myPicker.delegate = self;
-    self.myPicker.showsSelectionIndicator = YES;
-    self.myPicker.center = CGPointMake(self.view.center.x , self.view.center.y -100);
-    [self.view addSubview:self.myPicker];
-    
-
-    
-    //Create a Date Picker
-    self.myDatePicker = [[UIDatePicker alloc] init];
-    self.myDatePicker.center = CGPointMake(self.view.center.x , self.view.center.y + 100);
-    self.myDatePicker.datePickerMode = UIDatePickerModeDate;// 
-    [self.view addSubview:self.myDatePicker];
-    [self.myDatePicker addTarget:self action:@selector(datePickerDateChanged:) forControlEvents:UIControlEventValueChanged];
-    
-    NSTimeInterval oneYerTime = 365 * 24 * 60 * 60;
-    NSDate *todayDate = [NSDate date];
-    
-    NSDate *oneYearFromToday = [todayDate dateByAddingTimeInterval:oneYerTime];
-    NSDate *twoYearsFromToday = [todayDate dateByAddingTimeInterval:2 * oneYerTime];
-    
-    //Set the min and max the date picker can display
-    self.myDatePicker.minimumDate = oneYearFromToday;
-    self.myDatePicker.maximumDate = twoYearsFromToday;
-    
-    //If using UIDatePickerModeCountDownTimer to set the defaule starting coutdown time:
-    NSTimeInterval twoMinutes = 2 * 60;
-    [self.myDatePicker setCountDownDuration: twoMinutes];
-    
-    //Setting the Slider
-    self.slider = [[UISlider alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 200.0f, 23.0f)];
-    self.slider.center = CGPointMake(self.view.center.x , self.view.center.y - 175);
-    self.slider.minimumValue = 0.0f;
-    self.slider.maximumValue = 100.0f;
-    // .value is  read write
-    self.slider.value = self.slider.maximumValue / 2.0;  // could also use [self.slider setValue:self.slider.maximumValue / 2.0 animated:YES];
-    [self.view addSubview:self.slider];
-    
-    
-    //Customize color
-    self.slider.minimumTrackTintColor = [UIColor redColor];
-    self.slider.maximumTrackTintColor = [UIColor greenColor];
-    self.slider.thumbTintColor = [UIColor blackColor];
-    //using images
-    [self.slider setMinimumValueImage:[UIImage imageNamed:@"MinimumValue"]]; //displayed outerleft 23x23 or 46x46 for Retina
-    [self.slider setMaximumValueImage:[UIImage imageNamed:@"MaximumValue"]]; //displayed outerleft 23x23 or 46x46 for Retina
-    
-    
-    self.slider.continuous = NO; // Only notify when thumb is removed from slider
-    [self.slider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
-    
-    //Segmented Controler
-    NSArray<NSString *> *segments = @[ @"iPhone", [UIImage imageNamed:@"MaximumValue"], @"iPad", @"iPod", @"iMac"];
-    self.mySegmentedControl = [[UISegmentedControl alloc] initWithItems:segments];
-    CGRect segmentedFrame = self.mySegmentedControl.frame;
-    segmentedFrame.size.height = 128.0f;
-    segmentedFrame.size.width = 300.0f;
-    self.mySegmentedControl.frame = segmentedFrame;
-    self.mySegmentedControl.center = CGPointMake(self.view.center.x , self.view.center.y + 250);
-    [self.view addSubview:self.mySegmentedControl];
-    [self.mySegmentedControl addTarget:self action:@selector(segmentChanged:) forControlEvents:UIControlEventValueChanged];
-    
-    self.mySegmentedControl.momentary = YES; //Prevents selected portion from staying highlighted.
 }
 
 - (void) viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
+   // [self createAlertView];
+    
+    //defaults switch to off
+    [self.mainSwitch setOn:YES animated:YES]; //to turn on, don't need the animaged argument if you don't want it
+}
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+//PRAGMA MARK: Alert View
+- (void)createAlertView{
     //Adding an allert
     
     //Old way
     /*
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"You've been delivered an alert" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
-    
-    [alertView show];
-    */
+     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"You've been delivered an alert" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+     
+     [alertView show];
+     */
     //New way
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"My Alert"
                                                                    message:@"This is an alert."
@@ -156,9 +104,22 @@
         textField.secureTextEntry = YES;
     }];
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+//PRAGMA MARK: Switch View
+- (void)createSwitchView{
+    // Creating a switch by code
+    self.mainSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(100, 100, 0, 0)]; //(x, y, width, height)
     
-    //defaults switch to off
-    [self.mainSwitch setOn:YES animated:YES]; //to turn on, don't need the animaged argument if you don't want it
+    
+    [self.view addSubview:self.mainSwitch];
+    
+    self.mainSwitch.tintColor = [UIColor redColor]; //off-mode color
+    self.mainSwitch.onTintColor = [UIColor brownColor]; //on color
+    self.mainSwitch.thumbTintColor = [UIColor greenColor]; //knob' color
+    
+    //To call a selector method when switch is toggled
+    [self.mainSwitch addTarget:self action:@selector(switchIsChanged:) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void) switchIsChanged:(UISwitch*)paramSender{
@@ -174,16 +135,56 @@
         [self presentViewController:activity animated:YES completion:nil];
     }
     
-     NSLog(@"The slected Row is %li", (long)[self.myPicker selectedRowInComponent:0] + 1);
-    
-}
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    NSLog(@"The slected Row is %li", (long)[self.myPicker selectedRowInComponent:0] + 1);
 }
 
+//PRAGMA MARK: Button View
+- (void)createButtonView{
+    self.displaySecondViewControllerButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [self.displaySecondViewControllerButton setTitle:@"Display Second VC" forState:UIControlStateNormal];
+    [self.displaySecondViewControllerButton sizeToFit];
+    
+    self.displaySecondViewControllerButton.center = CGPointMake(275 , 110);
+    
+    [self.displaySecondViewControllerButton addTarget:self action:@selector(perfromDisplaySecondViewController:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:self.displaySecondViewControllerButton];
+}
+
+//PRAGMA MARK: Slider View
+- (void)createSliderView{
+    //Setting the Slider
+    self.slider = [[UISlider alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 200.0f, 23.0f)];
+    self.slider.center = CGPointMake(self.view.center.x , self.view.center.y - 175);
+    self.slider.minimumValue = 0.0f;
+    self.slider.maximumValue = 100.0f;
+    // .value is  read write
+    self.slider.value = self.slider.maximumValue / 2.0;  // could also use [self.slider setValue:self.slider.maximumValue / 2.0 animated:YES];
+    [self.view addSubview:self.slider];
+    
+    //Customize color
+    self.slider.minimumTrackTintColor = [UIColor redColor];
+    self.slider.maximumTrackTintColor = [UIColor greenColor];
+    self.slider.thumbTintColor = [UIColor blackColor];
+    //using images
+    [self.slider setMinimumValueImage:[UIImage imageNamed:@"MinimumValue"]]; //displayed outerleft 23x23 or 46x46 for Retina
+    [self.slider setMaximumValueImage:[UIImage imageNamed:@"MaximumValue"]]; //displayed outerleft 23x23 or 46x46 for Retina
+    
+    
+    self.slider.continuous = NO; // Only notify when thumb is removed from slider
+    [self.slider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
+}
 
 //PRAGMA MARK: Picker View
+- (void)createPickerView{
+    //Create a Picker by code
+    self.myPicker = [[UIPickerView alloc] init];
+    self.myPicker.dataSource = self;
+    self.myPicker.delegate = self;
+    self.myPicker.showsSelectionIndicator = YES;
+    self.myPicker.center = CGPointMake(self.view.center.x , self.view.center.y -100);
+    [self.view addSubview:self.myPicker];
+}
 // returns the number of 'columns'/components to display.
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
     
@@ -213,6 +214,29 @@
 }
 
 //PRAGMA MARK: Date Picker View
+- (void)createDatePickerView{
+    //Create a Date Picker
+    self.myDatePicker = [[UIDatePicker alloc] init];
+    self.myDatePicker.center = CGPointMake(self.view.center.x , self.view.center.y + 100);
+    self.myDatePicker.datePickerMode = UIDatePickerModeDate;//
+    [self.view addSubview:self.myDatePicker];
+    [self.myDatePicker addTarget:self action:@selector(datePickerDateChanged:) forControlEvents:UIControlEventValueChanged];
+    
+    NSTimeInterval oneYerTime = 365 * 24 * 60 * 60;
+    NSDate *todayDate = [NSDate date];
+    
+    NSDate *oneYearFromToday = [todayDate dateByAddingTimeInterval:oneYerTime];
+    NSDate *twoYearsFromToday = [todayDate dateByAddingTimeInterval:2 * oneYerTime];
+    
+    //Set the min and max the date picker can display
+    self.myDatePicker.minimumDate = oneYearFromToday;
+    self.myDatePicker.maximumDate = twoYearsFromToday;
+    
+    //If using UIDatePickerModeCountDownTimer to set the defaule starting coutdown time:
+    NSTimeInterval twoMinutes = 2 * 60;
+    [self.myDatePicker setCountDownDuration: twoMinutes];
+}
+
 - (void)datePickerDateChanged:(UIDatePicker *) paramDatePicker{
     
     if([paramDatePicker isEqual:self.myDatePicker]){
@@ -228,6 +252,20 @@
 }
 
 //PRAGMA MARK: Segmented Control
+- (void)createSegmentedControler{
+    //Segmented Controler
+    NSArray<NSString *> *segments = @[ @"iPhone", [UIImage imageNamed:@"MaximumValue"], @"iPad", @"iPod", @"iMac"];
+    self.mySegmentedControl = [[UISegmentedControl alloc] initWithItems:segments];
+    CGRect segmentedFrame = self.mySegmentedControl.frame;
+    segmentedFrame.size.height = 75.0f;
+    segmentedFrame.size.width = 300.0f;
+    self.mySegmentedControl.frame = segmentedFrame;
+    self.mySegmentedControl.center = CGPointMake(self.view.center.x , self.view.center.y + 250);
+    [self.view addSubview:self.mySegmentedControl];
+    [self.mySegmentedControl addTarget:self action:@selector(segmentChanged:) forControlEvents:UIControlEventValueChanged];
+    
+    self.mySegmentedControl.momentary = YES; //Prevents selected portion from staying highlighted.
+}
 -(void) segmentChanged:(UISegmentedControl *)paramSender{
     if([paramSender isEqual:self.mySegmentedControl]){
         NSInteger selectedSegmentIndex = [paramSender selectedSegmentIndex];
@@ -250,11 +288,18 @@
     return result;
 }
 
-//PRAGMA MARK: Sharing with UIActivityViewController
+//PRAGMA MARK: - Sharing with UIActivityViewController
 -(void)launchActivityWithString:(NSString *) content{
     self.activityViewController = [[UIActivityViewController alloc]
                                    initWithActivityItems:@[content] applicationActivities:nil];
     [self presentViewController:self.activityViewController animated:YES completion:^{/* Nothing for now**/}];
+}
+
+//PRAGMA MARK: UINavigationController
+-(void) perfromDisplaySecondViewController:(id)paramSender{
+    SecondViewController *secondVC = [[SecondViewController alloc] initWithNibName:nil bundle:nil];
+    
+    [self.navigationController pushViewController:secondVC animated:YES];
 }
 
 @end
