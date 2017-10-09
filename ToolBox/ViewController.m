@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "StringReverserActivity.h"
 #import "SecondViewController.h"
+#import "ThirdViewController.h"
 
 @interface ViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 
@@ -125,9 +126,11 @@
 - (void) switchIsChanged:(UISwitch*)paramSender{
     if([self.mainSwitch isOn]){
         NSLog(@"the switch is on");
+        //Presenting Sharing options with UIActivityViewController
         [self launchActivityWithString:@"Hello"];
     }
     else{
+        //Set up This apps StringReverserActivity  to include in the opstions of the ActivityViewController
         NSArray *itemsToShare = @[@"Item 1", @"Item 2", @"Item 3"];
         
         UIActivityViewController *activity = [[UIActivityViewController alloc] initWithActivityItems:itemsToShare applicationActivities:@[[StringReverserActivity new]]];
@@ -273,6 +276,12 @@
         NSString *selectedSegmentText = [paramSender titleForSegmentAtIndex:selectedSegmentIndex];
         
         NSLog(@"Segment %ld with %@ text is selected", (long)selectedSegmentIndex, selectedSegmentText);
+        
+        if(selectedSegmentIndex == 1){
+            SecondViewController *secondVC = [[SecondViewController alloc] initWithNibName:nil bundle:NULL];
+            UINavigationController *secondNavVC = [[UINavigationController alloc] initWithRootViewController:secondVC];
+            [self.navigationController pushViewController:secondVC animated:YES];
+        }
     }
 }
 
@@ -297,9 +306,20 @@
 
 //PRAGMA MARK: UINavigationController
 -(void) perfromDisplaySecondViewController:(id)paramSender{
-    SecondViewController *secondVC = [[SecondViewController alloc] initWithNibName:nil bundle:nil];
+
+    SecondViewController *secondVC = [[SecondViewController alloc] initWithNibName:nil bundle:NULL];
+    UINavigationController *secondNavVC = [[UINavigationController alloc] initWithRootViewController:secondVC];
     
-    [self.navigationController pushViewController:secondVC animated:YES];
+    ThirdViewController *thirdVC = [[ThirdViewController alloc] initWithNibName:nil bundle:NULL];
+    UINavigationController *thirdNavVC = [[UINavigationController alloc] initWithRootViewController:thirdVC];
+    
+    //Nav in Nav is not working
+
+    
+    UITabBarController *tabBarController = [[UITabBarController alloc] init];
+    [tabBarController setViewControllers:@[secondVC, thirdVC] animated:YES];
+
+    [self.navigationController pushViewController:tabBarController animated:YES];
 }
 
 @end

@@ -16,6 +16,7 @@
 		617886861F70D71100BE573F /* ch1.m in Sources */ = {isa = PBXBuildFile; fileRef = 617886851F70D71100BE573F /* ch1.m */; };
 		61B9BA231F7CABF600D524FA /* StringReverserActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 61B9BA221F7CABF600D524FA /* StringReverserActivity.m */; };
 		61B9BA261F7E97BC00D524FA /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61B9BA251F7E97BC00D524FA /* SecondViewController.m */; };
+		61B9BA291F85EEDF00D524FA /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61B9BA281F85EEDF00D524FA /* ThirdViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,8 @@
 		61B9BA221F7CABF600D524FA /* StringReverserActivity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StringReverserActivity.m; sourceTree = "<group>"; };
 		61B9BA241F7E97BC00D524FA /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		61B9BA251F7E97BC00D524FA /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		61B9BA271F85EEDF00D524FA /* ThirdViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
+		61B9BA281F85EEDF00D524FA /* ThirdViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +78,8 @@
 				617886741F70D67E00BE573F /* ViewController.m */,
 				61B9BA241F7E97BC00D524FA /* SecondViewController.h */,
 				61B9BA251F7E97BC00D524FA /* SecondViewController.m */,
+				61B9BA271F85EEDF00D524FA /* ThirdViewController.h */,
+				61B9BA281F85EEDF00D524FA /* ThirdViewController.m */,
 				617886761F70D67E00BE573F /* Main.storyboard */,
 				617886791F70D67E00BE573F /* Assets.xcassets */,
 				6178867B1F70D67E00BE573F /* LaunchScreen.storyboard */,
@@ -182,6 +187,7 @@
 				617886721F70D67E00BE573F /* AppDelegate.m in Sources */,
 				6178866F1F70D67E00BE573F /* main.m in Sources */,
 				61B9BA231F7CABF600D524FA /* StringReverserActivity.m in Sources */,
+				61B9BA291F85EEDF00D524FA /* ThirdViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
