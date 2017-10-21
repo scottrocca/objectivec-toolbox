@@ -18,7 +18,7 @@
 @property (nonatomic, strong) UIDatePicker *myDatePicker;
 @property (nonatomic, strong) UISlider *slider;
 @property (nonatomic, strong) UISegmentedControl *mySegmentedControl;
-@property (nonatomic, strong) UIButton *displaySecondViewControllerButton;
+@property (nonatomic, strong) UIButton *displaySecondViewControllerButton; //default height of UIButton is 44.0f in iOS7
 @property (nonatomic, strong) UIActivityViewController *activityViewController;
 
 
@@ -143,8 +143,11 @@
 
 //PRAGMA MARK: Button View
 - (void)createButtonView{
+    //Buttons must always be assigned a type
+    //If a button renders an image it must be of type UIButtonTypeCustom
     self.displaySecondViewControllerButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.displaySecondViewControllerButton setTitle:@"Display Second VC" forState:UIControlStateNormal];
+    [self.displaySecondViewControllerButton setTitle:@"I'm Pressed" forState:UIControlStateHighlighted];
     [self.displaySecondViewControllerButton sizeToFit];
     
     self.displaySecondViewControllerButton.center = CGPointMake(275 , 110);

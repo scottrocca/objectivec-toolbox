@@ -11,6 +11,8 @@
 @interface SecondViewController () <UITextFieldDelegate>
 @property (nonatomic, strong) UILabel *myLabel;
 @property (nonatomic, strong) UITextField *myTextField;
+@property (nonatomic, strong) UIButton *imageButton;
+@property (nonatomic, strong) UIImageView *myImageView;
 @end
 
 @implementation SecondViewController
@@ -38,6 +40,8 @@
     
     [self createLabelView];
     [self createTextField];
+    [self createImageButton];
+    [self createImageView];
     
     
 }
@@ -146,5 +150,39 @@
  // Pass the selected object to the new view controller.
  }
  */
+
+#pragma mark - ImageButton
+- (void) createImageButton{
+    UIImage *normalImage = [UIImage imageNamed:@"NormalBlueButton"];
+    UIImage *highlightedImage = [UIImage imageNamed:@"HighlightedBlueButton"];
+    
+    self.imageButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.imageButton.frame = CGRectMake(110.0f, 200.0f, 100.0f, 44.0f);
+    
+    //If your the image has text use setImage:forState instead
+    [self.imageButton setBackgroundImage:normalImage forState:UIControlStateNormal];
+    [self.imageButton setTitle:@"Normal" forState:UIControlStateNormal];
+    
+    [self.imageButton setBackgroundImage:highlightedImage forState:UIControlStateHighlighted];
+    [self.imageButton setTitle:@"Pressed" forState:UIControlStateHighlighted];
+    
+    self.imageButton.center = CGPointMake(self.view.center.x , self.view.center.y - 125);
+    
+    [self.view addSubview:self.imageButton];
+}
+
+#pragma mark - ImageVeiw
+- (void) createImageView{
+    UIImage *macBookAir = [UIImage imageNamed:@"MacBookAir"]; //displays the full image on screen. Can be an issue if image is bigger then screen
+
+    //self.myImageView = [[UIImageView alloc] initWithImage:macBookAir];//displays the full image on screen. Can be an issue if image is bigger then screen
+    //To constrain the image to a specific area
+    self.myImageView = [[UIImageView alloc] initWithFrame:CGRectMake(110.0f, 200.0f, 100.0f, 44.0f)];
+    self.myImageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.myImageView.image = macBookAir;
+    self.myImageView.center = CGPointMake(self.view.center.x , self.view.center.y + 75);
+    
+    [self.view addSubview:self.myImageView];
+}
 
 @end
