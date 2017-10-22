@@ -17,6 +17,8 @@
 		61B9BA231F7CABF600D524FA /* StringReverserActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 61B9BA221F7CABF600D524FA /* StringReverserActivity.m */; };
 		61B9BA261F7E97BC00D524FA /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61B9BA251F7E97BC00D524FA /* SecondViewController.m */; };
 		61B9BA291F85EEDF00D524FA /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61B9BA281F85EEDF00D524FA /* ThirdViewController.m */; };
+		61E11CF61F9BD5E50019AFBF /* ScrollViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E11CF51F9BD5E50019AFBF /* ScrollViewViewController.m */; };
+		61E11CFA1F9C4A890019AFBF /* WebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E11CF91F9C4A890019AFBF /* WebViewViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,10 @@
 		61B9BA251F7E97BC00D524FA /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		61B9BA271F85EEDF00D524FA /* ThirdViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
 		61B9BA281F85EEDF00D524FA /* ThirdViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
+		61E11CF41F9BD5E50019AFBF /* ScrollViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScrollViewViewController.h; sourceTree = "<group>"; };
+		61E11CF51F9BD5E50019AFBF /* ScrollViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScrollViewViewController.m; sourceTree = "<group>"; };
+		61E11CF81F9C4A890019AFBF /* WebViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewViewController.h; sourceTree = "<group>"; };
+		61E11CF91F9C4A890019AFBF /* WebViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,15 +77,10 @@
 		6178866C1F70D67E00BE573F /* ToolBox */ = {
 			isa = PBXGroup;
 			children = (
+				61E11CF71F9C221A0019AFBF /* ch1 ViewControllers */,
 				617886871F70DCF300BE573F /* ch1 */,
 				617886701F70D67E00BE573F /* AppDelegate.h */,
 				617886711F70D67E00BE573F /* AppDelegate.m */,
-				617886731F70D67E00BE573F /* ViewController.h */,
-				617886741F70D67E00BE573F /* ViewController.m */,
-				61B9BA241F7E97BC00D524FA /* SecondViewController.h */,
-				61B9BA251F7E97BC00D524FA /* SecondViewController.m */,
-				61B9BA271F85EEDF00D524FA /* ThirdViewController.h */,
-				61B9BA281F85EEDF00D524FA /* ThirdViewController.m */,
 				617886761F70D67E00BE573F /* Main.storyboard */,
 				617886791F70D67E00BE573F /* Assets.xcassets */,
 				6178867B1F70D67E00BE573F /* LaunchScreen.storyboard */,
@@ -107,6 +108,23 @@
 				61B9BA221F7CABF600D524FA /* StringReverserActivity.m */,
 			);
 			name = ch1;
+			sourceTree = "<group>";
+		};
+		61E11CF71F9C221A0019AFBF /* ch1 ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				617886731F70D67E00BE573F /* ViewController.h */,
+				617886741F70D67E00BE573F /* ViewController.m */,
+				61B9BA241F7E97BC00D524FA /* SecondViewController.h */,
+				61B9BA251F7E97BC00D524FA /* SecondViewController.m */,
+				61B9BA271F85EEDF00D524FA /* ThirdViewController.h */,
+				61B9BA281F85EEDF00D524FA /* ThirdViewController.m */,
+				61E11CF41F9BD5E50019AFBF /* ScrollViewViewController.h */,
+				61E11CF51F9BD5E50019AFBF /* ScrollViewViewController.m */,
+				61E11CF81F9C4A890019AFBF /* WebViewViewController.h */,
+				61E11CF91F9C4A890019AFBF /* WebViewViewController.m */,
+			);
+			name = "ch1 ViewControllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,6 +205,8 @@
 				617886721F70D67E00BE573F /* AppDelegate.m in Sources */,
 				6178866F1F70D67E00BE573F /* main.m in Sources */,
 				61B9BA231F7CABF600D524FA /* StringReverserActivity.m in Sources */,
+				61E11CFA1F9C4A890019AFBF /* WebViewViewController.m in Sources */,
+				61E11CF61F9BD5E50019AFBF /* ScrollViewViewController.m in Sources */,
 				61B9BA291F85EEDF00D524FA /* ThirdViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

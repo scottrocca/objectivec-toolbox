@@ -10,6 +10,8 @@
 #import "StringReverserActivity.h"
 #import "SecondViewController.h"
 #import "ThirdViewController.h"
+#import "ScrollViewViewController.h"
+#import "WebViewViewController.h"
 
 @interface ViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 
@@ -19,6 +21,7 @@
 @property (nonatomic, strong) UISlider *slider;
 @property (nonatomic, strong) UISegmentedControl *mySegmentedControl;
 @property (nonatomic, strong) UIButton *displaySecondViewControllerButton; //default height of UIButton is 44.0f in iOS7
+@property (nonatomic, strong) UIButton *displayScrollViewButton;
 @property (nonatomic, strong) UIActivityViewController *activityViewController;
 
 
@@ -146,15 +149,26 @@
     //Buttons must always be assigned a type
     //If a button renders an image it must be of type UIButtonTypeCustom
     self.displaySecondViewControllerButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [self.displaySecondViewControllerButton setTitle:@"Display Second VC" forState:UIControlStateNormal];
+    [self.displaySecondViewControllerButton setTitle:@"Launch Tab Bar Controller" forState:UIControlStateNormal];
     [self.displaySecondViewControllerButton setTitle:@"I'm Pressed" forState:UIControlStateHighlighted];
     [self.displaySecondViewControllerButton sizeToFit];
     
-    self.displaySecondViewControllerButton.center = CGPointMake(275 , 110);
+    self.displaySecondViewControllerButton.center = CGPointMake(275 , 90);
     
     [self.displaySecondViewControllerButton addTarget:self action:@selector(perfromDisplaySecondViewController:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:self.displaySecondViewControllerButton];
+    
+    self.displayScrollViewButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [self.displayScrollViewButton setTitle:@"Launch scroll view" forState:UIControlStateNormal];
+
+    [self.displayScrollViewButton sizeToFit];
+    
+    self.displayScrollViewButton.center = CGPointMake(275 , 140);
+    
+    [self.displayScrollViewButton addTarget:self action:@selector(perfromDisplayScrollView) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:self.displayScrollViewButton];
 }
 
 //PRAGMA MARK: Slider View
@@ -318,11 +332,18 @@
     
     //Nav in Nav is not working
 
+    WebViewViewController *webVC = [[WebViewViewController alloc] initWithNibName:nil bundle:NULL];
     
     UITabBarController *tabBarController = [[UITabBarController alloc] init];
-    [tabBarController setViewControllers:@[secondVC, thirdVC] animated:YES];
+    [tabBarController setViewControllers:@[secondVC, thirdVC, webVC] animated:YES];
 
     [self.navigationController pushViewController:tabBarController animated:YES];
+}
+
+- (void)perfromDisplayScrollView{
+    ScrollViewViewController *scrollVC = [[ScrollViewViewController alloc] initWithNibName:nil bundle:NULL];
+    
+     [self.navigationController pushViewController:scrollVC animated:YES];
 }
 
 @end

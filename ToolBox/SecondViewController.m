@@ -179,6 +179,17 @@
     //To constrain the image to a specific area
     self.myImageView = [[UIImageView alloc] initWithFrame:CGRectMake(110.0f, 200.0f, 100.0f, 44.0f)];
     self.myImageView.contentMode = UIViewContentModeScaleAspectFit;
+    /*
+    UIViewContentModeScaleToFill - Will scale the image inside the image view to fill the entire boundaries of the image view
+     
+     UIViewContentModeScaleAspectFit - Will make sure the image inside the image view will have the right aspect ratio and fits inside the image view's boundaries
+     
+     UIViewContentModeScaleAspectFill - Will make sure the image inside the image view will have the right aspect ratio and fills the entire boundaries of the image view.
+                                         For this value to work properly, make sure that you set the clipsToBounds property of the image view to YES.
+     
+         The clipstToBounds property of UIView denotes whether the subviews of that view should be clipped if they go outside the boundaries of the view. You use this property if you want to be absolutely certain that the subviews of the specific view will not get rendered outside the boundaries of that view ( or that they do get rendered out-side the boundaries, depending on your requirements).
+     
+     */
     self.myImageView.image = macBookAir;
     self.myImageView.center = CGPointMake(self.view.center.x , self.view.center.y + 75);
     
