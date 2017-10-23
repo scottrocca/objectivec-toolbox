@@ -13,6 +13,9 @@
 @property (nonatomic, strong) UITextField *myTextField;
 @property (nonatomic, strong) UIButton *imageButton;
 @property (nonatomic, strong) UIImageView *myImageView;
+@property (nonatomic, strong) UIProgressView *progressView;
+@property (nonatomic, assign) float currentProgress;
+@property (nonatomic, strong) UILabel *attribLabel;
 @end
 
 @implementation SecondViewController
@@ -42,6 +45,8 @@
     [self createTextField];
     [self createImageButton];
     [self createImageView];
+    [self createProgressView];
+    [self createAttribLabel];
     
     
 }
@@ -141,15 +146,6 @@
 }
 
 #pragma mark - Label View
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 #pragma mark - ImageButton
 - (void) createImageButton{
@@ -196,4 +192,60 @@
     [self.view addSubview:self.myImageView];
 }
 
+#pragma mark - Progress View
+- (void) createProgressView{
+    self.progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleBar];
+    self.progressView.progress = self.currentProgress = 0;
+    self.progressView.center = CGPointMake(self.view.center.x , self.view.center.y + 125);
+    [self.view addSubview:self.progressView];
+    [self performSelector:@selector(updateProgress) withObject:nil afterDelay:5.0f]; //5 seconds
+}
+
+- (void)updateProgress{
+    self.currentProgress += 10;
+    self.progressView.progress = self.currentProgress /100.0f;
+    
+    if(self.currentProgress != 100){
+         [self performSelector:@selector(updateProgress) withObject:nil afterDelay:5.0f];
+    }
+}
+
+#pragma mark - Attributed Strings
+- (void) createAttribLabel{
+    self.attribLabel = [[UILabel alloc] init];
+    self.attribLabel.backgroundColor = [UIColor clearColor];
+    self.attribLabel.attributedText = [self attributedText];
+    [self.attribLabel sizeToFit];
+    self.attribLabel.center = CGPointMake(self.view.center.x , self.view.center.y + 175);
+    [self.view addSubview:self.attribLabel];
+}
+
+- (NSAttributedString *) attributedText{
+    NSString *string = @"iOS SDK";
+    
+    NSMutableAttributedString *result = [[NSMutableAttributedString alloc] initWithString:string];
+    
+    NSDictionary *attributesForFirstWord = @{
+                                             NSFontAttributeName : [UIFont boldSystemFontOfSize:60.0f],
+                                             NSForegroundColorAttributeName : [UIColor redColor],
+                                             NSBackgroundColorAttributeName : [UIColor blackColor]
+                                             };
+    
+    NSShadow *shadow = [[NSShadow alloc] init];
+    shadow.shadowColor = [UIColor darkGrayColor];
+    shadow.shadowOffset = CGSizeMake(4.0f, 4.0f);
+    
+    NSDictionary *attributesForSecondWord = @{
+                                              NSFontAttributeName : [UIFont boldSystemFontOfSize:60.0f],
+                                              NSForegroundColorAttributeName : [UIColor whiteColor],
+                                              NSBackgroundColorAttributeName : [UIColor redColor],
+                                              NSShadowAttributeName : shadow
+                                              };
+    //Find the string "iOS in the whole string and set its attribute
+    [result setAttributes:attributesForFirstWord range:[string rangeOfString:@"iOS"]];
+    
+    [result setAttributes:attributesForSecondWord range:[string rangeOfString:@"SDK"]];
+    
+    return [[NSAttributedString alloc] initWithAttributedString:result];
+}
 @end
