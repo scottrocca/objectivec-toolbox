@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6143F7021FAA05AA00F5004D /* BlockObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 6143F7011FAA05AA00F5004D /* BlockObjects.m */; };
 		6178866F1F70D67E00BE573F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6178866E1F70D67E00BE573F /* main.m */; };
 		617886721F70D67E00BE573F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 617886711F70D67E00BE573F /* AppDelegate.m */; };
 		617886751F70D67E00BE573F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 617886741F70D67E00BE573F /* ViewController.m */; };
@@ -14,6 +15,7 @@
 		6178867A1F70D67E00BE573F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 617886791F70D67E00BE573F /* Assets.xcassets */; };
 		6178867D1F70D67E00BE573F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6178867B1F70D67E00BE573F /* LaunchScreen.storyboard */; };
 		617886861F70D71100BE573F /* ch1.m in Sources */ = {isa = PBXBuildFile; fileRef = 617886851F70D71100BE573F /* ch1.m */; };
+		617CED521FB46B110090B21A /* Utlilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 617CED511FB46B110090B21A /* Utlilities.m */; };
 		61B9BA231F7CABF600D524FA /* StringReverserActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 61B9BA221F7CABF600D524FA /* StringReverserActivity.m */; };
 		61B9BA261F7E97BC00D524FA /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61B9BA251F7E97BC00D524FA /* SecondViewController.m */; };
 		61B9BA291F85EEDF00D524FA /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61B9BA281F85EEDF00D524FA /* ThirdViewController.m */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6143F7001FAA05AA00F5004D /* BlockObjects.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlockObjects.h; sourceTree = "<group>"; };
+		6143F7011FAA05AA00F5004D /* BlockObjects.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlockObjects.m; sourceTree = "<group>"; };
 		6178866A1F70D67E00BE573F /* ToolBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToolBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6178866E1F70D67E00BE573F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		617886701F70D67E00BE573F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -35,6 +39,8 @@
 		617886841F70D71100BE573F /* ch1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ch1.h; path = ../ch1.h; sourceTree = "<group>"; };
 		617886851F70D71100BE573F /* ch1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ch1.m; path = ../ch1.m; sourceTree = "<group>"; };
 		617886881F70DD2600BE573F /* Car.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Car.h; sourceTree = "<group>"; };
+		617CED501FB46B110090B21A /* Utlilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utlilities.h; sourceTree = "<group>"; };
+		617CED511FB46B110090B21A /* Utlilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utlilities.m; sourceTree = "<group>"; };
 		61B9BA211F7CABF600D524FA /* StringReverserActivity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StringReverserActivity.h; sourceTree = "<group>"; };
 		61B9BA221F7CABF600D524FA /* StringReverserActivity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StringReverserActivity.m; sourceTree = "<group>"; };
 		61B9BA241F7E97BC00D524FA /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
@@ -58,6 +64,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6143F6FF1FA9F73B00F5004D /* ch7 */ = {
+			isa = PBXGroup;
+			children = (
+				6143F7001FAA05AA00F5004D /* BlockObjects.h */,
+				6143F7011FAA05AA00F5004D /* BlockObjects.m */,
+			);
+			name = ch7;
+			sourceTree = "<group>";
+		};
 		617886611F70D67E00BE573F = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +92,7 @@
 		6178866C1F70D67E00BE573F /* ToolBox */ = {
 			isa = PBXGroup;
 			children = (
+				6143F6FF1FA9F73B00F5004D /* ch7 */,
 				61E11CF71F9C221A0019AFBF /* ch1 ViewControllers */,
 				617886871F70DCF300BE573F /* ch1 */,
 				617886701F70D67E00BE573F /* AppDelegate.h */,
@@ -86,6 +102,8 @@
 				6178867B1F70D67E00BE573F /* LaunchScreen.storyboard */,
 				6178867E1F70D67E00BE573F /* Info.plist */,
 				6178866D1F70D67E00BE573F /* Supporting Files */,
+				617CED501FB46B110090B21A /* Utlilities.h */,
+				617CED511FB46B110090B21A /* Utlilities.m */,
 			);
 			path = ToolBox;
 			sourceTree = "<group>";
@@ -205,6 +223,8 @@
 				617886721F70D67E00BE573F /* AppDelegate.m in Sources */,
 				6178866F1F70D67E00BE573F /* main.m in Sources */,
 				61B9BA231F7CABF600D524FA /* StringReverserActivity.m in Sources */,
+				617CED521FB46B110090B21A /* Utlilities.m in Sources */,
+				6143F7021FAA05AA00F5004D /* BlockObjects.m in Sources */,
 				61E11CFA1F9C4A890019AFBF /* WebViewViewController.m in Sources */,
 				61E11CF61F9BD5E50019AFBF /* ScrollViewViewController.m in Sources */,
 				61B9BA291F85EEDF00D524FA /* ThirdViewController.m in Sources */,
