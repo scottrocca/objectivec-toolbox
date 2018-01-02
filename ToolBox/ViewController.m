@@ -12,6 +12,7 @@
 #import "ThirdViewController.h"
 #import "ScrollViewViewController.h"
 #import "WebViewViewController.h"
+#import "ConstraintsViewController.h"
 
 @interface ViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 
@@ -334,8 +335,10 @@
 
     WebViewViewController *webVC = [[WebViewViewController alloc] initWithNibName:nil bundle:NULL];
     
+    ConstraintsViewController *contraintsVC = [[ConstraintsViewController alloc] initWithNibName:nil bundle:NULL];
+    
     UITabBarController *tabBarController = [[UITabBarController alloc] init];
-    [tabBarController setViewControllers:@[secondVC, thirdVC, webVC] animated:YES];
+    [tabBarController setViewControllers:@[secondVC, thirdVC, webVC, contraintsVC] animated:YES];
 
     [self.navigationController pushViewController:tabBarController animated:YES];
 }
