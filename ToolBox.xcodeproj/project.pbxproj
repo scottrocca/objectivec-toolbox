@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6103052D20CCEF6200D303D8 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6103052C20CCEF6200D303D8 /* CollectionViewController.m */; };
+		6103053120CDE60500D303D8 /* MyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6103052F20CDE60400D303D8 /* MyCollectionViewCell.m */; };
+		6103053220CDE60500D303D8 /* MyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6103053020CDE60400D303D8 /* MyCollectionViewCell.xib */; };
 		6143F7021FAA05AA00F5004D /* BlockObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 6143F7011FAA05AA00F5004D /* BlockObjects.m */; };
 		6178866F1F70D67E00BE573F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6178866E1F70D67E00BE573F /* main.m */; };
 		617886721F70D67E00BE573F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 617886711F70D67E00BE573F /* AppDelegate.m */; };
@@ -25,6 +28,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6103052B20CCEF6200D303D8 /* CollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
+		6103052C20CCEF6200D303D8 /* CollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
+		6103052E20CDE60400D303D8 /* MyCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCollectionViewCell.h; sourceTree = "<group>"; };
+		6103052F20CDE60400D303D8 /* MyCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCollectionViewCell.m; sourceTree = "<group>"; };
+		6103053020CDE60400D303D8 /* MyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCollectionViewCell.xib; sourceTree = "<group>"; };
 		6143F7001FAA05AA00F5004D /* BlockObjects.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlockObjects.h; sourceTree = "<group>"; };
 		6143F7011FAA05AA00F5004D /* BlockObjects.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlockObjects.m; sourceTree = "<group>"; };
 		6178866A1F70D67E00BE573F /* ToolBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToolBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +75,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6103052A20CCEED300D303D8 /* ch5 */ = {
+			isa = PBXGroup;
+			children = (
+				6103052B20CCEF6200D303D8 /* CollectionViewController.h */,
+				6103052C20CCEF6200D303D8 /* CollectionViewController.m */,
+				6103052E20CDE60400D303D8 /* MyCollectionViewCell.h */,
+				6103052F20CDE60400D303D8 /* MyCollectionViewCell.m */,
+				6103053020CDE60400D303D8 /* MyCollectionViewCell.xib */,
+			);
+			name = ch5;
+			sourceTree = "<group>";
+		};
 		6143F6FF1FA9F73B00F5004D /* ch7 */ = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +115,7 @@
 		6178866C1F70D67E00BE573F /* ToolBox */ = {
 			isa = PBXGroup;
 			children = (
+				6103052A20CCEED300D303D8 /* ch5 */,
 				61D9B3C11FBD52B000782642 /* ch3 */,
 				6143F6FF1FA9F73B00F5004D /* ch7 */,
 				61E11CF71F9C221A0019AFBF /* ch1 ViewControllers */,
@@ -219,6 +240,7 @@
 			files = (
 				6178867D1F70D67E00BE573F /* LaunchScreen.storyboard in Resources */,
 				6178867A1F70D67E00BE573F /* Assets.xcassets in Resources */,
+				6103053220CDE60500D303D8 /* MyCollectionViewCell.xib in Resources */,
 				617886781F70D67E00BE573F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -238,8 +260,10 @@
 				6178866F1F70D67E00BE573F /* main.m in Sources */,
 				61B9BA231F7CABF600D524FA /* StringReverserActivity.m in Sources */,
 				617CED521FB46B110090B21A /* Utlilities.m in Sources */,
+				6103053120CDE60500D303D8 /* MyCollectionViewCell.m in Sources */,
 				6143F7021FAA05AA00F5004D /* BlockObjects.m in Sources */,
 				61E11CFA1F9C4A890019AFBF /* WebViewViewController.m in Sources */,
+				6103052D20CCEF6200D303D8 /* CollectionViewController.m in Sources */,
 				61E11CF61F9BD5E50019AFBF /* ScrollViewViewController.m in Sources */,
 				61B9BA291F85EEDF00D524FA /* ThirdViewController.m in Sources */,
 			);
