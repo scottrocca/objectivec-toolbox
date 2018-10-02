@@ -60,4 +60,12 @@
     return highFontSize;
 }
 
++ (NSString *)hexStringWithColor:(UIColor *)color
+{
+    CGFloat red = 0.0, green = 0.0, blue = 0.0, alpha = 0.0;
+    [userColor getRed:&red green:&green blue:&blue alpha:&alpha];
+    
+    return [NSString stringWithFormat:@"%02lX%02lX%02lX", lroundf(red * 255), lroundf(green * 255), lroundf(blue * 255)];
+}
+
 @end
