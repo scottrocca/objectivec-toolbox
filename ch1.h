@@ -32,3 +32,48 @@
 - (void) ThisIsAInstanceMethod;
 
 @end
+ 
+ /*
+ If your class has a property in the header like NSString this does not protect it from being altered if someone assigns a 
+ value to it. The reason being is you can’t protect it from someone assigning a mutable string to it. For example
+
+@interface MyClass : NSObject
+
+@Property (nonatomic, strong) NSString *myClassString;
+
+@end
+
+And in a class that instantiates MyClass:
+
+MyClass *myClass= [[MyClass alloc] init];
+NSMutableString *someString = [[NSMutableString alloc] initWithString:@“Hello Scott”];
+myClass.myClassString = someString;
+
+[someString appendString:@" is not happy"];
+
+NSLog(@“myClassString:%@ \nsomeString:%@", myClass.myClassString, someString);
+
+Will print out:
+myClassString:Hello Scott is not happy
+someString:Hello Scott is not happy
+
+Making it (nonatomic, copy ) gives you that extra protection and will keep it from being altered.
+myClassString:Hello Scott
+someString:Hello Scott is not happy
+
+Another protection level also needs to occur if you create an initializer that takes a string. In the initializer, you need 
+to call copy on the parameters to prevent the same issue. For example:
+
+@implementation MyClass
+
+(instancetype)initWithString:(NSString *)aString
+{
+
+_myClassString = [aString copy];
+}
+
+@end
+
+scottrocca on Apr 18  Author
+I updated the code to make NSNumber and NSDate strong since there is no mutable version of these types.
+*/
